@@ -9,17 +9,81 @@ output:
 ## Loading and preprocessing the data
 
 
+```{r}
+dta <- read.csv('C:\\Users\\eldmo\\Downloads\\repdata_data_activity\\activity.csv')
+```
+```{r}
+library(tidyverse)
+
+na.omit(dta$steps)
+
+
+
+```
+
 
 ## What is mean total number of steps taken per day?
 
+```{r}
+
+library(plyr)
+library(statsr)
+library(tidyr)
+library(rmarkdown)
+library(ggplot2)
+library(dplyr)
+
+mean(dta$steps, na.rm=TRUE)
+count(dta, vars = "steps")
+```
 
 
 ## What is the average daily activity pattern?
 
+```{r}
+
+
+qplot(x=interval, y=steps,
+      data=dta, na.rm=TRUE,
+      main="Steps per daily interval",
+      xlab="Interval", ylab="Steps")
+
+```
 
 
 ## Imputing missing values
 
 
+```{r}
+
+
+
+new_dataset <- na.omit(dta)
+
+qplot(x=interval, y=steps,
+      data=new_dataset, na.rm=TRUE,
+      main="Steps per daily interval",
+      xlab="Interval", ylab="Steps")
+
+mean(new_dataset$steps)
+median(new_dataset$steps)
+
+```
+
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+
+
+```{r}
+
+# Yes, differences in weekend and weekday.
+
+
+
+
+```
+
+
+
